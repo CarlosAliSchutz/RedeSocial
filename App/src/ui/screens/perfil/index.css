@@ -1,0 +1,46 @@
+.info-navegacao a{
+  text-decoration: none;
+  color: black;
+}
+
+.amigo-sem-publicacoes {
+  margin-top: 150px;
+}
+
+.button-desfazer-amizade, .button-solicitar-amizade {
+  width: 240px;
+  cursor: pointer;
+  background-color: #434343;
+  color: white;
+  border-radius: 30px;
+  border: none;
+  font-size: 15px;
+  font-weight: bold;
+  height: 60px;
+}
+
+.button-desabilitado-amizade{
+  width: 240px;
+  height: 60px;
+  border-radius: 30px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.button-desfazer-amizade:hover {
+  background: #FF0608;
+}
+
+.amigos-buscados button:hover {
+  background: #FF0608;
+}
+
+.button-solicitar-amizade:hover{
+  background: #4BB18C
+}
+
+.div-central{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

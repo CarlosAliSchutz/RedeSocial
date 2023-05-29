@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "beXERH/uTJ1kJERwwb6Qi9JxY54bD2e85TqLfFKWHZBOyGS8Xs5DoYkxutft+pWpxzLnU3pXsGUsalN8ZLw9Mw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\alisc\\OneDrive\\Área de Trabalho\\.NET CWI\\TCC-Dotnet-RedeSocial\\Api\\src\\RedeSocial.Application\\RedeSocial.Application.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\alisc\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
+    "C:\\Users\\alisc\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\alisc\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
+    "C:\\Users\\alisc\\.nuget\\packages\\microsoft.extensions.primitives\\2.2.0\\microsoft.extensions.primitives.2.2.0.nupkg.sha512",
+    "C:\\Users\\alisc\\.nuget\\packages\\system.memory\\4.5.1\\system.memory.4.5.1.nupkg.sha512",
+    "C:\\Users\\alisc\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.1\\system.runtime.compilerservices.unsafe.4.5.1.nupkg.sha512",
+    "C:\\Users\\alisc\\.nuget\\packages\\system.text.encodings.web\\4.5.0\\system.text.encodings.web.4.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}

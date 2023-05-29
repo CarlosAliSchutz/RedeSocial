@@ -1,0 +1,212 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profileCover{
+  height: 250px;
+  background: radial-gradient(ellipse at right bottom, #EEB1BF 5%, #d42dab 25%, #4d1d63 50%, #030243 100%);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.profileUserImg{
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 150px;
+  border: 3px solid white;
+}
+
+.profileInfo{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100px;
+  margin-bottom: 15px;
+}
+
+.profileInfoName{
+  font-size: 24px;
+}
+
+.profileInfoDesc{
+  font-weight: 300;
+}
+
+.profilePublicacoes {
+  display: flex;
+  background-color: white;
+  width: 500px;
+  flex-direction: column;
+  padding: 10px 5px;
+  border-radius: 10px;
+
+}
+
+.profilePublicacoes h1 {
+  font-size: 15px;
+  align-self: center;
+}
+
+.profileButton {
+  border-radius: 10px;
+  padding: 5px;
+  height: 50px;
+}
+
+.imagemPerfil {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+
+.publicacoes{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly
+}
+
+.publicacoes .input-wrapper {
+  min-width: 250px;
+}
+
+.publicacoes button{
+  cursor: pointer;
+  width: 80px;
+  padding: 10px ;
+  font-size: 20px;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  background: #434343;
+}
+
+.publicacoes button:hover{
+  background: #111111;
+}
+
+.publicacoes button:focus{
+  background: #111111;
+}
+
+.post {
+  width: 500px;
+  background-color: white;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-family: Segoe UI,Frutiger,Frutiger Linotype,Dejavu Sans,Helvetica Neue,Arial,sans-serif;
+}
+
+.post h1 {
+  font-size: 15px;
+}
+
+.info-usuario {
+  background-color: white;
+  height: 500px;
+  width: 350px;
+  position: absolute;
+  right: 10px;
+  top: 363px;
+  display: flex;
+  flex-direction: column;
+  line-height: 300%;
+  padding: 20px;
+  flex-wrap: wrap;
+  color: rgb(0, 0, 0);
+  border-radius: 10px;
+
+  text-shadow: 2px 2px #ffffff;
+}
+
+.info-usuario h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.postPerfil {
+  display: flex;
+  align-items: center;
+  justify-content: space-between
+}
+
+.post span {
+  display: flex;
+  width: 100%;
+  flex-direction: row-reverse;
+}
+
+.publi-text {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.logo {
+  position: absolute;
+  top: 10px;
+  left: 0px;
+  width: 300px;
+}
+
+.logout {
+  position: absolute;
+  margin-top: 10px;
+  right: 10px;
+  height: 30px;
+  width: 120px;
+  opacity: 0.6;
+  cursor: pointer;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.logout:hover {
+  background: rgb(155, 155, 155);
+  border: none;
+}
+
+.info-navegacao {
+  background-color: white;
+  height: 500px;
+  width: 350px;
+  position: absolute;
+  left: 10px;
+  top: 363px;
+  display: flex;
+  flex-direction: column;
+  line-height: 300%;
+  padding: 20px;
+  flex-wrap: wrap;
+  color: grey;
+  border-radius: 10px;
+}
+
+.info-navegacao ul {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.info-navegacao li{
+  list-style: none;
+  cursor: pointer;
+  color: black;
+  font-size: 25px;
+}
+

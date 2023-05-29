@@ -1,0 +1,45 @@
+.post-emoji {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.post-emoji img {
+  width: 30px;
+  margin: 0;
+  cursor: pointer;
+}
+
+.post .imagemPerfil{
+  margin: 0 10px 10px 0
+}
+
+.comentarios {
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.comentarios img {
+  width: 25px;
+  margin-right: 5px;
+}
+
+.comentar-post{
+  display: flex;
+}
+
+.comentar-post .input-label{
+  margin: 0;
+}
+
+.comentar-post button {
+  margin: 10px;
+}
+
+.post-permissoes {
+  display: flex;
+  width: 100%;
+  flex-direction: row-reverse;
+}

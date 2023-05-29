@@ -1,0 +1,32 @@
+.editar-perfil {
+  width: 300px;
+}
+
+.editar-perfil label{
+  color: black;
+  margin: 0;
+}
+
+.editar-perfil input {
+  width: 300px;
+  border-radius: 10px;
+}
+
+.editar-perfil button {
+  cursor: pointer;
+  width: 150px;
+  padding: 10px ;
+  font-size: 20px;
+  border: 2px solid #434343;
+  border-radius: 30px;
+}
+
+.editar-perfil button:hover {
+  background: #2F2D2D;
+  color: #FFFFFF;
+}
+
+.editar-perfil button:focus {
+  background: #2F2D2D;
+  color: #FFFFFF;
+}

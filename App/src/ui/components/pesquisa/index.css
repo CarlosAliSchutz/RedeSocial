@@ -1,0 +1,48 @@
+.pesquisar-usuarios input{
+  width: 300px;
+  border-radius: 10px;
+}
+
+.usuarios-buscados {
+  height: 200px;
+  overflow-y: auto;
+  width: 300px;
+  background-color: rgb(245, 245, 245);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.usuarios-buscados div {
+  display: flex;
+  margin: 10px 0;
+}
+
+.usuarios-buscados img {
+  margin-right: 15px;
+}
+
+.usuarios-buscados button {
+  cursor: pointer;
+  background-color: #434343;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  font-family: 'Poppins';
+}
+
+.usuarios-buscados button:hover {
+  background: #111111;
+}
+
+.usuarios-buscados button:focus {
+  background: #111111;
+}
+
+.usuarios-buscados a {
+  text-decoration: none;
+  color: black;
+}
+
+.usuarios-buscados p {
+  font-size: 20px;
+}

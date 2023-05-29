@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "arnwW0A9C7nMqbLR4CS60hf2s3GChPhMy3jZNDnvDMoJZ/sfy325re3qzdpJGe2IUcm5x/R7SepAo2CY0fwMpg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\alisc\\OneDrive\\Área de Trabalho\\.NET CWI\\TCC-Dotnet-RedeSocial\\Api\\src\\RedeSocial.Domain\\RedeSocial.Domain.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\alisc\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\alisc\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
+    "C:\\Users\\alisc\\.nuget\\packages\\microsoft.extensions.primitives\\2.2.0\\microsoft.extensions.primitives.2.2.0.nupkg.sha512",
+    "C:\\Users\\alisc\\.nuget\\packages\\system.memory\\4.5.1\\system.memory.4.5.1.nupkg.sha512",
+    "C:\\Users\\alisc\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.1\\system.runtime.compilerservices.unsafe.4.5.1.nupkg.sha512",
+    "C:\\Users\\alisc\\.nuget\\packages\\system.text.encodings.web\\4.5.0\\system.text.encodings.web.4.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}

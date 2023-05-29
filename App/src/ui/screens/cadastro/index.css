@@ -1,0 +1,78 @@
+.cadastro {
+  height: 100vh;
+  background-color: #4d1d63;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cadastro__form {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  min-width: 300px;
+  margin-top: 40px;
+  padding: 25px;
+  border-radius: 20px;
+}
+
+.cadastro__form .input {
+  background: #FFFFFF;
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  height: 40px;
+}
+
+.button-div{
+  display: flex;
+  justify-content: center;
+}
+
+.cadastro__div h1{
+  display: flex;
+  justify-content: center;
+}
+
+.cadastro .button {
+  cursor: pointer;
+  margin-top: 20px;
+  width: 250px;
+  padding: 10px ;
+  font-size: 20px;
+  border: 2px solid #434343;
+  border-radius: 30px;
+}
+
+.cadastro-error {
+  color: #eb2e2e;
+}
+
+.button-cadastro {
+  cursor: pointer;
+  margin-top: 50px;
+  width: 250px;
+  padding: 10px ;
+  font-size: 20px;
+}
+
+.cadastro .button:hover, .cadastro .button:hover{
+  background: #2F2D2D;
+  color: #FFFFFF;
+}
+
+.cadastro .button:focus, .cadastro .button:focus{
+  background: #2F2D2D;
+  color: #FFFFFF;
+}
+
+.cadastro__form input[type="date"] {
+  background-color: rgb(163, 63, 212);
+  padding: 15px;
+  font-family: "Roboto Mono",monospace;
+  color: #ffffff;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+}

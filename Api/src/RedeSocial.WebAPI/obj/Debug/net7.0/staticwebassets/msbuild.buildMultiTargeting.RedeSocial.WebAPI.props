@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\RedeSocial.WebAPI.props" />
+</Project>
