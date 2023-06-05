@@ -1,6 +1,7 @@
 ﻿using RedeSocial.Application.Contacts;
 using RedeSocial.Application.Contacts.Documents.Request;
 using RedeSocial.Application.Contacts.Documents.Response;
+using RedeSocial.Application.Validations.Core;
 using RedeSocial.Domain.Contracts.Repositories;
 using RedeSocial.Domain.Models;
 
@@ -22,11 +23,14 @@ public class ComentarioService : IComentarioService
     public async Task<ComentarioResponse> Comentar(int postId, ComentarioRequest comentarioRequest, int autorId)
     {
         var post = await _postRepository.ObterPostIdAsync(postId);
-        var usuario = await _usuarioService.ObterDadosUsuarioLogadoAsync(autorId);
+        var usuario = await _usuarioService.ObterDadosUsuario(autorId);
+
+        var response = new ComentarioResponse();
 
         if (post == null)
         {
-            return null; 
+            response.AddNotification(new Notification("Post não encontrado."));
+            return response;
         }
 
         var comentario = new Comentario
@@ -51,6 +55,7 @@ public class ComentarioService : IComentarioService
 
         return comentarioResponse;
     }
+
 
     public async Task<List<Comentario>> ObterComentariosDoPostAsync(int postId)
     {

@@ -1,8 +1,9 @@
-﻿using RedeSocial.Domain.Models.Enums;
+﻿using RedeSocial.Application.Validations.Core;
+using RedeSocial.Domain.Models.Enums;
 
 namespace RedeSocial.Application.Contacts.Documents.Response;
 
-public class PostResponse
+public class PostResponse : Notifiable
 {
     public int PostId { get; set; }
     public int AutorId { get; set; }

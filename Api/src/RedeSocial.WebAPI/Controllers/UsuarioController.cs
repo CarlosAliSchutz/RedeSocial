@@ -82,7 +82,7 @@ public class UsuarioController : ControllerBase
             return BadRequest("UserId inválido.");
         }
 
-        var user = await _usuarioService.ObterDadosUsuarioLogadoAsync(userId);
+        var user = await _usuarioService.ObterDadosUsuario(userId);
 
         if (user == null)
         {

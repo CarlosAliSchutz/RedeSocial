@@ -5,5 +5,6 @@ export const POST_KEY = "Post";
 export const COMENTARIO_KEY = "Comentario";
 export const CURTIDA_KEY = "Curtida";
 export const AMIZADE_KEY = "Amizade";
+export const MENSAGEM_KEY = "Mensagem";
 
 export const TOKEN_KEY = "token";

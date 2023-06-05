@@ -16,7 +16,6 @@ public interface IAmizadeRepository
     void AtualizarPedidoAmizade(Amizade pedidoAmizade);
 
     Task<List<Amizade>> ObterAmizadesDoUsuario(int usuarioId, StatusAmizade statusAmizade);
-    void Salvar();
 
     Task RemoverAmizade(Amizade amizade);
 

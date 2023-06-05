@@ -116,7 +116,7 @@ public class UsuarioRepository : BaseRepository, IUsuarioRepository
         var buscaQuery = _context.Amizades
             .Where(a => (a.UsuarioId == usuarioAutenticado || a.AmigoId == usuarioAutenticado) && a.StatusAmizade == StatusAmizade.ACEITO)
             .Select(a => a.UsuarioId == usuarioAutenticado ? a.Amigo : a.Usuario)
-            .AsEnumerable(); // Mudança aqui
+            .AsEnumerable(); 
 
         if (!string.IsNullOrEmpty(busca))
         {

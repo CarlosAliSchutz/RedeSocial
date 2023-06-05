@@ -1,20 +1,26 @@
 import { useEffect, useState } from "react";
-import { useFeed } from "../../../api/post/feed";
-import { usePost } from "../../../api/post/post";
-import { useEditarPerfil } from "../../../api/user/editarPerfil";
-import { useLogout } from "../../../api/user/logout.api";
-import { useProfile } from "../../../api/user/me";
-import FotoPadrao from "../../../assets/foto-padrao.png";
-import Logo from "../../../assets/Logo.png";
+import {
+  useEditarPerfil,
+  useFeed,
+  useLogout,
+  usePost,
+  useProfile,
+} from "../../../api";
+import { useConversa } from "../../../api/mensagem/conversa";
+import { useMensagem } from "../../../api/mensagem/enviarMensagem";
 import { TOKEN_KEY, USER_KEY } from "../../../constants";
 import useGlobalUser from "../../../context/user/user.context";
-import { Button } from "../../components";
-import { Amizades } from "../../components/amizade/amizade.component";
-import { EditarPerfil } from "../../components/editar-perfil/editar-perfil.component";
-import { Input } from "../../components/input/input.component";
-import { PesquisarUsuarios } from "../../components/pesquisa/pesquisar.component";
-import { Post } from "../../components/post/post.component";
-import { Solicitacoes } from "../../components/solicitacao/solicitacao.component";
+import FotoPadrao from "../../../utils/img/foto-padrao.png";
+import Logo from "../../../utils/img/Logo.png";
+import {
+  Amizades,
+  Button,
+  EditarPerfil,
+  Input,
+  PesquisarUsuarios,
+  Post,
+  Solicitacoes,
+} from "../../components";
 import "./index.css";
 
 export function FeedScreen() {
@@ -31,6 +37,9 @@ export function FeedScreen() {
   const [pesquisaAberto, setPesquisaAberto] = useState(false);
   const [editarPerfil, setEditarPerfil] = useState(false);
   const { putEditarPerfil, usuario } = useEditarPerfil();
+
+  const { getConversa, mensagens } = useConversa();
+  const { postEnviarMensagem, mensagem } = useMensagem();
 
   useEffect(() => {
     getProfile();
@@ -97,6 +106,14 @@ export function FeedScreen() {
     putEditarPerfil(apelido, imagemPerfil);
   }
 
+  function teste() {
+    getConversa(2);
+  }
+
+  function teste2() {
+    postEnviarMensagem(2, "react");
+  }
+
   return (
     <>
       <div className="profile">
@@ -105,7 +122,6 @@ export function FeedScreen() {
           <Button onClick={handleClickLogout} className="logout">
             LOGOUT
           </Button>
-
           <img
             className="profileUserImg"
             src={perfil?.imagemPerfil ? perfil?.imagemPerfil : FotoPadrao}

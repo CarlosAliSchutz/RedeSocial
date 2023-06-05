@@ -9,11 +9,11 @@ public interface IAmizadeService
 
     Task<List<PedidoAmizadeResponse>> ListarPedidosAmizadeSolicitados(int usuarioId);
 
-    void ResponderPedidoAmizade(int pedidoAmizadeId, bool aceitar);
+    public PedidoAmizadeResponse ResponderPedidoAmizade(int pedidoAmizadeId, bool aceitar);
 
     Task<List<Usuario>> ObterAmigos(int usuarioId);
 
-    Task RemoverAmizade(int usuarioId, int amigoId);
+    Task<PedidoAmizadeResponse> RemoverAmizade(int usuarioId, int amigoId);
 
     Task<bool> VerificarAmizadeSolicitada(int usuarioAutenticadoId, int usuarioSolicitadoId);
 }

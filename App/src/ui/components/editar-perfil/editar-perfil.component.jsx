@@ -10,6 +10,8 @@ export function EditarPerfil({ onEditarPerfil }) {
   function handleEditarPerfil(e) {
     e.preventDefault();
     onEditarPerfil(apelido, imagemPerfil);
+    setApelido("");
+    setImagemPerfil("");
   }
 
   return (

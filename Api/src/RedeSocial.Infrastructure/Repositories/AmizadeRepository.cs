@@ -19,10 +19,14 @@ public class AmizadeRepository : BaseRepository, IAmizadeRepository
     public async Task<bool> VerificarPedidoAmizadeAsync(int usuarioId, int amigoId)
     {
         var pedidoAmizade = await _context.Amizades
-            .FirstOrDefaultAsync(p => p.UsuarioId == usuarioId && p.AmigoId == amigoId);
+            .FirstOrDefaultAsync(p =>
+                (p.UsuarioId == usuarioId && p.AmigoId == amigoId) ||
+                (p.AmigoId == usuarioId && p.UsuarioId == amigoId) &&
+                (p.StatusAmizade == StatusAmizade.SOLICITADO || p.StatusAmizade == StatusAmizade.ACEITO));
 
         return pedidoAmizade != null;
     }
+
 
     public async Task CriarPedidoAmizadeAsync(Amizade pedidoAmizade)
     {
@@ -54,10 +58,6 @@ public class AmizadeRepository : BaseRepository, IAmizadeRepository
     public void AtualizarPedidoAmizade(Amizade pedidoAmizade)
     {
         _context.Amizades.Update(pedidoAmizade);
-    }
-
-    public void Salvar()
-    {
         _context.SaveChanges();
     }
 

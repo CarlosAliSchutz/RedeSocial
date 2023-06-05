@@ -4,7 +4,7 @@
 }
 
 .usuarios-buscados {
-  height: 200px;
+  max-height: 200px;
   overflow-y: auto;
   width: 300px;
   background-color: rgb(245, 245, 245);

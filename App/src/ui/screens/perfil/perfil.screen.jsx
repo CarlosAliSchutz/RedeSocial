@@ -1,22 +1,26 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { useAmizades } from "../../../api/amizade/amizades";
-import { useDesfazerAmizade } from "../../../api/amizade/defazerAmizade";
-import { useSolicitarAmizade } from "../../../api/amizade/solicitacaoAmizade";
-import { useVerificarSolicitacao } from "../../../api/amizade/verificarSolicitacao";
-import { useFeedAmigo } from "../../../api/post/visitarPerfil";
-import { useListarUsuarios } from "../../../api/user/listarUsuarios";
-import { useLogout } from "../../../api/user/logout.api";
-import { useProfile } from "../../../api/user/me";
-import FotoPadrao from "../../../assets/foto-padrao.png";
-import Logo from "../../../assets/Logo.png";
+import {
+  useAmizades,
+  useDesfazerAmizade,
+  useFeedAmigo,
+  useListarUsuarios,
+  useLogout,
+  useProfile,
+  useSolicitarAmizade,
+  useVerificarSolicitacao,
+} from "../../../api";
 import { TOKEN_KEY, USER_KEY } from "../../../constants";
 import useGlobalUser from "../../../context/user/user.context";
-import { Button } from "../../components";
-import { Amizades } from "../../components/amizade/amizade.component";
-import { PesquisarUsuarios } from "../../components/pesquisa/pesquisar.component";
-import { PostAmigo } from "../../components/post/post-amigo.component";
-import { Solicitacoes } from "../../components/solicitacao/solicitacao.component";
+import FotoPadrao from "../../../utils/img/foto-padrao.png";
+import Logo from "../../../utils/img/Logo.png";
+import {
+  Amizades,
+  Button,
+  PesquisarUsuarios,
+  PostAmigo,
+  Solicitacoes,
+} from "../../components";
 import "./index.css";
 
 export function PerfilScreen() {

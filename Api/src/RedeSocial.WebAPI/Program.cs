@@ -1,22 +1,23 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using System.Text;
 using RedeSocial.Application.Contacts;
 using RedeSocial.Application.Implementations.Services;
+using RedeSocial.Application.Utils;
 using RedeSocial.Domain.Contracts.Repositories;
 using RedeSocial.Infrastructure.Data;
 using RedeSocial.Infrastructure.Repositories;
 using RedeSocial.WebAPI.Security;
 using RedeSocial.WebAPI.Security.Interface;
-using RedeSocial.Application.Utils;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(option =>
@@ -57,15 +58,22 @@ builder.Services.AddScoped<IPostService, PostService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<ICurtidaService, CurtidaService>();
 builder.Services.AddScoped<IComentarioService, ComentarioService>();
+builder.Services.AddScoped<IMensagemService, MensagemService>();
 
 builder.Services.AddScoped<AuthenticationUtils>();
 builder.Services.AddHttpContextAccessor();
+builder.Services.Configure<TokenSettings>(builder.Configuration.GetSection("TokenSettings"));
+builder.Services.AddScoped<ITokenService, TokenService>();
+
 
 builder.Services.AddScoped<IComentarioRepository, ComentarioRepository>();
 builder.Services.AddScoped<ICurtidaRepository, CurtidaRepository>();
 builder.Services.AddScoped<IPostRepository, PostRepository>();
 builder.Services.AddScoped<IAmizadeRepository, AmizadeRepository>();
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+builder.Services.AddScoped<IMensagemRepository, MensagemRepository>();
+
+var tokenSettings = builder.Configuration.GetSection("TokenSettings").Get<TokenSettings>();
 
 builder.Services.AddAuthentication(options =>
 {
@@ -77,7 +85,7 @@ builder.Services.AddAuthentication(options =>
 {
     opt.TokenValidationParameters = new TokenValidationParameters
     {
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(TokenSettings.SecretKey)),
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenSettings.SecretKey)),
         ValidateIssuerSigningKey = true,
         ValidateIssuer = false,
         ValidateAudience = false
@@ -87,6 +95,7 @@ builder.Services.AddAuthentication(options =>
 builder.Services.AddAuthorization();
 
 builder.Services.AddCors();
+builder.Services.AddSignalR();
 
 var app = builder.Build();
 
@@ -100,11 +109,17 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseCors(b => b.AllowAnyOrigin()
-            .AllowAnyHeader()
-            .AllowAnyMethod());
+    .AllowAnyHeader()
+    .AllowAnyMethod());
 
+app.UseRouting();
+
+app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapControllers();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+});
 
 app.Run();

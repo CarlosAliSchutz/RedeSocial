@@ -13,7 +13,7 @@ public interface IUsuarioService
 
     Usuario ObterUsuario(int usuarioId);
 
-    Task<UsuarioLogadoResponse> ObterDadosUsuarioLogadoAsync(int userId);
+    Task<UsuarioLogadoResponse> ObterDadosUsuario(int userId);
 
     Task<Usuario> ObterUsuarioAsync(int usuarioId);
 

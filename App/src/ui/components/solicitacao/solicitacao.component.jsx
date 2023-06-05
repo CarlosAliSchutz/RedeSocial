@@ -1,6 +1,5 @@
 import { useEffect } from "react";
-import { useAmizade } from "../../../api/amizade/pedidosAmizade";
-import { useAmizadeResponder } from "../../../api/amizade/responderPedido";
+import { useAmizade, useAmizadeResponder } from "../../../api";
 import { AmigoBox } from "./amigo.component";
 
 export function Solicitacoes() {

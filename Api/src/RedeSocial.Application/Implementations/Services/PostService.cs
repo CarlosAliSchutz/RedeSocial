@@ -1,6 +1,7 @@
 ﻿using RedeSocial.Application.Contacts;
 using RedeSocial.Application.Contacts.Documents.Request;
 using RedeSocial.Application.Contacts.Documents.Response;
+using RedeSocial.Application.Validations.Core;
 using RedeSocial.Domain.Contracts.Repositories;
 using RedeSocial.Domain.Models;
 using RedeSocial.Domain.Models.Enums;
@@ -25,12 +26,13 @@ public class PostService : IPostService
     public async Task<PostResponse> CriarPost(int usuarioId, CriarPostRequest request)
     {
         var usuario = await _usuarioService.ObterUsuarioAsync(usuarioId);
+        var postResponse = new PostResponse();
 
         if (usuario == null)
         {
-            throw new Exception($"Usuário não encontrado.");
+            postResponse.AddNotification(new Notification("Usuário não encontrado."));
+            return postResponse;
         }
-
 
         var post = new Post
         {
@@ -109,19 +111,24 @@ public class PostService : IPostService
         return await _postRepository.ListarPostsPublicosUsuario(usuarioId);
     }
 
-    public async Task AlterarPermissaoPostUsuario(int postId, Permissao permissao)
+    public async Task<PostResponse> AlterarPermissaoPostUsuario(int postId, Permissao permissao)
     {
         var post = await _postRepository.ObterPostIdAsync(postId);
+        var response = new PostResponse();
 
         if (post == null)
         {
-            throw new Exception("Post com não encontrado.");
+            response.AddNotification(new Notification("Post não encontrado."));
+            return response;
         }
 
         post.PermissaoVisualizar = permissao;
 
         await _postRepository.AtualizarPost(post);
+
+        return response;
     }
+
 
     public async Task AtualizarContadorCurtidas(int postId)
     {
@@ -135,6 +142,4 @@ public class PostService : IPostService
             await _postRepository.AtualizarPost(post);
         }
     }
-
-
 }

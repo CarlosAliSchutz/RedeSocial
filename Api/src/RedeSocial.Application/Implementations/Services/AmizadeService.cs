@@ -1,5 +1,6 @@
 ﻿using RedeSocial.Application.Contacts;
 using RedeSocial.Application.Contacts.Documents.Response;
+using RedeSocial.Application.Validations.Core;
 using RedeSocial.Domain.Contracts.Repositories;
 using RedeSocial.Domain.Models;
 using RedeSocial.Domain.Models.Enums;
@@ -68,9 +69,9 @@ public class AmizadeService : IAmizadeService
 
     public async Task<List<Usuario>> ObterAmigos(int usuarioId)
     {
-        var amigos = await _amizadeRepository.ObterAmizadesDoUsuario(usuarioId, StatusAmizade.ACEITO);
+        var amizades = await _amizadeRepository.ObterAmizadesDoUsuario(usuarioId, StatusAmizade.ACEITO);
 
-        var amigosEUsuarios = amigos.SelectMany(a => new[] { a.Amigo, a.Usuario }).Distinct();
+        var amigosEUsuarios = amizades.SelectMany(a => new[] { a.Amigo, a.Usuario }).Distinct();
         var amigosSemUsuarioAutenticado = amigosEUsuarios.Where(u => u.Id != usuarioId);
 
         return amigosSemUsuarioAutenticado.ToList();
@@ -81,36 +82,44 @@ public class AmizadeService : IAmizadeService
         return _amizadeRepository.ObterAmizadePorId(pedidoAmizadeId);
     }
 
-    public void ResponderPedidoAmizade(int pedidoAmizadeId, bool aceitar)
+    public PedidoAmizadeResponse ResponderPedidoAmizade(int pedidoAmizadeId, bool aceitar)
     {
         var pedidoAmizade = _amizadeRepository.ObterAmizadePorId(pedidoAmizadeId);
+        var response = new PedidoAmizadeResponse();
 
         if (pedidoAmizade == null)
         {
-            throw new Exception("Pedido de amizade não encontrado.");
+            response.AddNotification(new Notification("Pedido de amizade não encontrado."));
+            return response;
         }
 
         if (pedidoAmizade.StatusAmizade != StatusAmizade.SOLICITADO)
         {
-            throw new Exception("Este pedido de amizade já foi respondido anteriormente.");
+            response.AddNotification(new Notification("Este pedido de amizade já foi respondido anteriormente."));
+            return response;
         }
 
         pedidoAmizade.StatusAmizade = aceitar ? StatusAmizade.ACEITO : StatusAmizade.NEGADO;
 
         _amizadeRepository.AtualizarPedidoAmizade(pedidoAmizade);
-        _amizadeRepository.Salvar();
+
+        return response;
     }
 
-    public async Task RemoverAmizade(int usuarioId, int amigoId)
+    public async Task<PedidoAmizadeResponse> RemoverAmizade(int usuarioId, int amigoId)
     {
         var amizade = await _amizadeRepository.ObterAmizade(usuarioId, amigoId);
+        var response = new PedidoAmizadeResponse();
 
         if (amizade == null || amizade.StatusAmizade != StatusAmizade.ACEITO)
         {
-            throw new Exception("Não foi possível remover a amizade.");
+            response.AddNotification(new Notification("Não foi possível remover a amizade."));
+            return response;
         }
 
         await _amizadeRepository.RemoverAmizade(amizade);
+
+        return response;
     }
 
     public async Task<bool> VerificarAmizadeSolicitada(int usuarioAutenticadoId, int usuarioSolicitadoId)

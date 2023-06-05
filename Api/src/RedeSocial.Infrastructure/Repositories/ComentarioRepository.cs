@@ -16,7 +16,7 @@ public class ComentarioRepository : IComentarioRepository
 
     public async Task Add(Comentario comentario)
     {
-        _context.Comentarios.AddAsync(comentario);
+        await _context.Comentarios.AddAsync(comentario);
         await _context.SaveChangesAsync();
     }
 

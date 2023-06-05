@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
-import { useComentar } from "../../../api/comentario/comentar";
-import { useComentarios } from "../../../api/comentario/comentarios";
-import { useCurtir } from "../../../api/curtida/curtir";
-import { useBuscarPost } from "../../../api/post/buscarPost";
-import { usePermissao } from "../../../api/post/permissao";
-import { useListarUsuarios } from "../../../api/user/listarUsuarios";
-import { useProfile } from "../../../api/user/me";
-import ComentarioEmoji from "../../../assets/comment.png";
-import CurtidaEmoji from "../../../assets/curtir.png";
+import {
+  useBuscarPost,
+  useComentar,
+  useComentarios,
+  useCurtir,
+  useListarUsuarios,
+} from "../../../api";
+import ComentarioEmoji from "../../../utils/img/comment.png";
+import CurtidaEmoji from "../../../utils/img/curtir.png";
+import FotoPadrao from "../../../utils/img/foto-padrao.png";
 import { Button } from "../button/button.component";
 import { Input } from "../input/input.component";
-import FotoPadrao from "../../../assets/foto-padrao.png";
 import "./index.css";
 
 export function PostAmigo({ post }) {
@@ -20,22 +20,17 @@ export function PostAmigo({ post }) {
   const [comentario, setComentario] = useState("");
   const { postCurtir, curtida } = useCurtir();
   const { getBuscaPost, busca } = useBuscarPost();
-  const { getProfile, perfil } = useProfile();
 
   const { getBuscaUsuario, buscaUsuario } = useListarUsuarios();
 
   useEffect(() => {
-    getBuscaUsuario(post?.autorId)
-  }, [post])
+    getBuscaUsuario(post?.autorId);
+  }, [post]);
 
   const dataCriacao = new Date(post?.criacao);
   const dataFormatada = dataCriacao.toLocaleDateString("pt-BR", {
     timeZone: "UTC",
   });
-
-  useEffect(() => {
-    getProfile();
-  }, []);
 
   function handleCurtir() {
     postCurtir(post?.id);
@@ -60,7 +55,11 @@ export function PostAmigo({ post }) {
       <div className="postPerfil">
         <img
           className="imagemPerfil"
-          src={buscaUsuario[0]?.imagemPerfil ? buscaUsuario[0]?.imagemPerfil : FotoPadrao}
+          src={
+            buscaUsuario[0]?.imagemPerfil
+              ? buscaUsuario[0]?.imagemPerfil
+              : FotoPadrao
+          }
           alt="Foto do perfil"
         />
         <h1>{post.autorName}</h1>
@@ -96,7 +95,9 @@ export function PostAmigo({ post }) {
               value={comentario}
               onChange={(e) => setComentario(e.target.value)}
             />
-            <Button disabled={comentario == ""} onClick={handleComentar}>Comentar</Button>
+            <Button disabled={comentario == ""} onClick={handleComentar}>
+              Comentar
+            </Button>
           </div>
         </>
       )}

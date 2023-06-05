@@ -1,8 +1,8 @@
-﻿using RedeSocial.Domain.Models.Enums;
+﻿using RedeSocial.Application.Validations.Core;
 
 namespace RedeSocial.Application.Contacts.Documents.Response;
 
-public class PedidoAmizadeResponse
+public class PedidoAmizadeResponse : Notifiable
 {
     public int PedidoId { get; set; }
     public int UsuarioId { get; set; }

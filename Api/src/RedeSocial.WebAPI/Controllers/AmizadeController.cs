@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using RedeSocial.Application.Contacts;
 using RedeSocial.Application.Contacts.Documents.Response;
-using RedeSocial.Application.Implementations.Services;
 using RedeSocial.Domain.Models;
 
 namespace RedeSocial.WebAPI.Controllers;
@@ -39,6 +38,9 @@ public class AmizadeController : ControllerBase
     }
 
     [HttpGet("pedidos-amizade")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<IEnumerable<PedidoAmizadeResponse>>> ListarPedidosAmizadeSolicitados()
     {
         var usuarioId = int.Parse(User.Claims.FirstOrDefault(x => x.Type.Equals("Id"))?.Value);
@@ -50,18 +52,21 @@ public class AmizadeController : ControllerBase
     [HttpPost("responder-pedido-amizade/{pedidoAmizadeId}")]
     public IActionResult ResponderPedidoAmizade(int pedidoAmizadeId, bool aceitar)
     {
-        try
+        var response = _amizadeService.ResponderPedidoAmizade(pedidoAmizadeId, aceitar);
+
+        if (!response.IsValid())
         {
-            _amizadeService.ResponderPedidoAmizade(pedidoAmizadeId, aceitar);
-            return Ok("Resposta ao pedido de amizade registrada com sucesso.");
+            return BadRequest(response.Notifications);
         }
-        catch (Exception ex)
-        {
-            return StatusCode(500, $"Erro ao responder ao pedido de amizade: {ex.Message}");
-        }
+
+        return Ok("Resposta ao pedido de amizade registrada com sucesso.");
     }
 
+
     [HttpGet("amigos")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<List<Usuario>>> ObterAmigos()
     {
         var usuarioId = int.Parse(User.Claims.FirstOrDefault(x => x.Type.Equals("Id"))?.Value);
@@ -71,7 +76,10 @@ public class AmizadeController : ControllerBase
         return Ok(amigos);
     }
 
-    [HttpPost("remover-amizade")]
+    [HttpDelete("remover-amizade/{amigoId}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> RemoverAmizade(int amigoId)
     {
         var usuarioAutenticado = int.Parse(User.Claims.FirstOrDefault(x => x.Type == "Id")?.Value);
@@ -105,6 +113,4 @@ public class AmizadeController : ControllerBase
             return Ok(false);
         }
     }
-
-
 }

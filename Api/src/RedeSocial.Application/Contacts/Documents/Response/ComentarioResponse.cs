@@ -1,6 +1,8 @@
-﻿namespace RedeSocial.Application.Contacts.Documents.Response;
+﻿using RedeSocial.Application.Validations.Core;
 
-public class ComentarioResponse
+namespace RedeSocial.Application.Contacts.Documents.Response;
+
+public class ComentarioResponse : Notifiable
 {
     public int Id { get; set; }
     public int PostId { get; set; }

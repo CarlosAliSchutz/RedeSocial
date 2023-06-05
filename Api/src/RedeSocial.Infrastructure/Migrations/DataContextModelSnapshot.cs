@@ -118,6 +118,42 @@ namespace RedeSocial.Infrastructure.Migrations
                     b.HasDiscriminator().HasValue("Curtida");
                 });
 
+            modelBuilder.Entity("RedeSocial.Domain.Models.Mensagem", b =>
+                {
+                    b.HasBaseType("RedeSocial.Domain.Models.Base");
+
+                    b.Property<int>("AmigoId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Conteudo")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("DataEnvio")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasIndex("AmigoId");
+
+                    b.HasIndex("UsuarioId");
+
+                    b.ToTable("Bases", t =>
+                        {
+                            t.Property("AmigoId")
+                                .HasColumnName("Mensagem_AmigoId");
+
+                            t.Property("Conteudo")
+                                .HasColumnName("Mensagem_Conteudo");
+
+                            t.Property("UsuarioId")
+                                .HasColumnName("Mensagem_UsuarioId");
+                        });
+
+                    b.HasDiscriminator().HasValue("Mensagem");
+                });
+
             modelBuilder.Entity("RedeSocial.Domain.Models.Post", b =>
                 {
                     b.HasBaseType("RedeSocial.Domain.Models.Base");
@@ -239,6 +275,25 @@ namespace RedeSocial.Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("Post");
+
+                    b.Navigation("Usuario");
+                });
+
+            modelBuilder.Entity("RedeSocial.Domain.Models.Mensagem", b =>
+                {
+                    b.HasOne("RedeSocial.Domain.Models.Usuario", "Amigo")
+                        .WithMany()
+                        .HasForeignKey("AmigoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("RedeSocial.Domain.Models.Usuario", "Usuario")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Amigo");
 
                     b.Navigation("Usuario");
                 });

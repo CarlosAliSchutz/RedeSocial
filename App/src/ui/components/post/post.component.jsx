@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
-import { useComentar } from "../../../api/comentario/comentar";
-import { useComentarios } from "../../../api/comentario/comentarios";
-import { useCurtir } from "../../../api/curtida/curtir";
-import { useBuscarPost } from "../../../api/post/buscarPost";
-import { usePermissao } from "../../../api/post/permissao";
-import { useProfile } from "../../../api/user/me";
-import FotoPadrao from "../../../assets/foto-padrao.png";
-import ComentarioEmoji from "../../../assets/comment.png";
-import CurtidaEmoji from "../../../assets/curtir.png";
+import {
+  useBuscarPost,
+  useComentar,
+  useComentarios,
+  useCurtir,
+  usePermissao,
+  useProfile,
+} from "../../../api";
+import ComentarioEmoji from "../../../utils/img/comment.png";
+import CurtidaEmoji from "../../../utils/img/curtir.png";
+import FotoPadrao from "../../../utils/img/foto-padrao.png";
 import { Button } from "../button/button.component";
 import { Input } from "../input/input.component";
 import "./index.css";
@@ -104,7 +106,9 @@ export function Post({ post }) {
               value={comentario}
               onChange={(e) => setComentario(e.target.value)}
             />
-            <Button disabled={comentario == ""} onClick={handleComentar}>Comentar</Button>
+            <Button disabled={comentario == ""} onClick={handleComentar}>
+              Comentar
+            </Button>
           </div>
         </>
       )}

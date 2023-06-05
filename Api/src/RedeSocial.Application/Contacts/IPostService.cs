@@ -17,7 +17,7 @@ public interface IPostService
 
     Task<List<Post>> ObterPostsDoUsuario(int usuarioId, int visitanteId);
 
-    Task AlterarPermissaoPostUsuario(int postId, Permissao permissao);
+    Task<PostResponse> AlterarPermissaoPostUsuario(int postId, Permissao permissao);
 
     Task AtualizarContadorCurtidas(int postId);
 }

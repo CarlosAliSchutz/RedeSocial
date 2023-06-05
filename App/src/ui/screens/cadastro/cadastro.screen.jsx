@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
-import { useCadastro } from "../../../api/user/cadastro";
+import { useCadastro } from "../../../api";
 import { Button, Input } from "../../components";
 import "./index.css";
 

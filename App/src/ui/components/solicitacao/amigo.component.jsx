@@ -1,7 +1,6 @@
 import { useEffect } from "react";
-import { useAmizadeResponder } from "../../../api/amizade/responderPedido";
-import { useListarUsuarios } from "../../../api/user/listarUsuarios";
-import FotoPadrao from "../../../assets/foto-padrao.png";
+import { useListarUsuarios } from "../../../api";
+import FotoPadrao from "../../../utils/img/foto-padrao.png";
 import "./index.css";
 
 export function AmigoBox({ amigo, pedido, onAceitarAmizade }) {

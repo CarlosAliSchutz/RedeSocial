@@ -1,10 +1,7 @@
 import { useEffect, useState } from "react";
-import { useDesfazerAmizade } from "../../../api/amizade/defazerAmizade";
-import { usePesquisarAmigos } from "../../../api/user/pesquisarAmigos";
-import FotoPadrao from "../../../assets/foto-padrao.png";
-import { Button } from "../button/button.component";
-import { DesfazerAmizades } from "../desfazer-amizade/desfazer-amizade.component";
-import { Input } from "../input/input.component";
+import { useDesfazerAmizade, usePesquisarAmigos } from "../../../api";
+import FotoPadrao from "../../../utils/img/foto-padrao.png";
+import { Button, DesfazerAmizades, Input } from "../index";
 import "./index.css";
 
 export function Amizades() {

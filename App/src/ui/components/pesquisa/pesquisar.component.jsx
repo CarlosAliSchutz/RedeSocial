@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { usePesquisarUsuarios } from "../../../api/user/pesquisarUsuario";
-import FotoPadrao from "../../../assets/foto-padrao.png";
+import { usePesquisarUsuarios } from "../../../api";
+import FotoPadrao from "../../../utils/img/foto-padrao.png";
 import { Button } from "../button/button.component";
 import { Input } from "../input/input.component";
 import "./index.css";
@@ -35,7 +35,7 @@ export function PesquisarUsuarios() {
         {usuarios &&
           usuarios?.itens?.map((usuario, index) => {
             return (
-              <Link to={`/feed/${usuario.id}`}  key={index}>
+              <Link to={`/feed/${usuario.id}`} key={index}>
                 <div>
                   <img
                     className="imagemPerfil"
